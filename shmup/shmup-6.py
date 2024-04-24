@@ -63,7 +63,7 @@ class Mob(pygame.sprite.Sprite):
         self.image_orig = random.choice(meteor_images)
         self.image_orig.set_colorkey(BLACK)
         self.image = self.image_orig.copy()
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect() 
         self.radius = int(self.rect.width * .85 / 2)
         # pygame.draw.circle(self.image, RED, self.rect.center, self.radius)
         self.rect.x = random.randrange(WIDTH - self.rect.width)

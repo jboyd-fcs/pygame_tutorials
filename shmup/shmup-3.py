@@ -21,7 +21,7 @@ YELLOW = (255, 255, 0)
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Shmup!")
+pygame.display.set_caption("Shmup!") 
 clock = pygame.time.Clock()
 
 class Player(pygame.sprite.Sprite):
