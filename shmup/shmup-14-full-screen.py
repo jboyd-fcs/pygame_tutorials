@@ -16,6 +16,8 @@ snd_dir = path.join(path.dirname(__file__), 'snd')
 #HEIGHT = 600
 FPS = 60
 POWERUP_TIME = 5000
+# to add a high score, add line below
+high_score = 0
 
 on_Electrocade = False
 
@@ -254,10 +256,12 @@ class Explosion(pygame.sprite.Sprite):
                 self.rect.center = center
 
 def show_go_screen():
+    global high_score
     screen.blit(background, background_rect)
     # check if game is running on ElectroCade
     if on_Electrocade:  # check to see if running on ElectroCade
         draw_text(screen, "SHMUP!", 64, WIDTH / 2, HEIGHT / 4)
+        draw_text(screen, f'High Score: {str(high_score)}', 18, WIDTH / 2, HEIGHT * 4 / 10) # high score 
         draw_text(screen, "'4' and '6' keypad keys move left and right, '5' to fire", 22,
                 WIDTH / 2, HEIGHT / 2)
         draw_text(screen, "Press a key to begin", 18, WIDTH / 2, HEIGHT * 6 / 10)
@@ -265,6 +269,8 @@ def show_go_screen():
         draw_text(screen, "Game Designer: Mr. Boyd", 18, WIDTH / 2, HEIGHT * 8 / 10)
     else:
         draw_text(screen, "SHMUP!", 64, WIDTH / 2, HEIGHT / 4)
+        draw_text(screen, f'High Score: {str(high_score)}', 18, WIDTH / 2, HEIGHT * 4 / 10) # high score 
+        
         draw_text(screen, "Arrow keys move, Space to fire", 22,
                 WIDTH / 2, HEIGHT / 2)
         draw_text(screen, "Press a key to begin", 18, WIDTH / 2, HEIGHT * 6 / 10)
@@ -407,6 +413,10 @@ while running:
     # if the player died and the explosion has finished playing
     if player.lives == 0 and not death_explosion.alive():
         game_over = True
+        print(score, high_score)
+        # add this code to save high scores
+        if score > high_score:
+            high_score = score
 
     # Draw / render
     screen.fill(BLACK)
