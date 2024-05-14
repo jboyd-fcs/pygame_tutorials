@@ -205,7 +205,9 @@ while running:
     screen.blit(background, background_rect)
     all_sprites.draw(screen)
     draw_text(screen, str(score), 18, WIDTH / 2, 10)
+    
     draw_shield_bar(screen, 5, 5, player.shield)
+    print(player.shield)
     # *after* drawing everything, flip the display
     pygame.display.flip()
 

@@ -161,6 +161,7 @@ while running:
     # check to see if a bullet hit a mob
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
     for hit in hits:
+        print(hit)
         score += 50 - hit.radius
         m = Mob()
         all_sprites.add(m)
